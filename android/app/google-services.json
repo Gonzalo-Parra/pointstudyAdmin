@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "247520953225",
+    "project_id": "pointstudy-7d358",
+    "storage_bucket": "pointstudy-7d358.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247520953225:android:278bed21b7d27ea8f01758",
+        "android_client_info": {
+          "package_name": "ar.com.Init.pointstudy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "247520953225-c08dkrud8d6k5tsn85kg76snhtntlvhm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8VdVnFTH2OIFoPYvtNciAGhgzVHE3xNI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "247520953225-c08dkrud8d6k5tsn85kg76snhtntlvhm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
