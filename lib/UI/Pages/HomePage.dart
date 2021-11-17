@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pointstudy_admin/Firebase/cloud.dart';
+import 'package:pointstudy_admin/Firebase/consultas.dart';
 
 class HomePage extends StatefulWidget {
   static String id = 'HomePage';
@@ -12,6 +14,7 @@ class _HomePageState extends State<HomePage> {
   List nivEscolar = ['PRIMARIO', 'SECUNDARIO', 'TERCEARIO', 'ESPECIALES'];
   String valueTS = 'PUBLICA';
   List tipEscuela = ['PUBLICA', 'PRIVADA'];
+  var consultas = new Database();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -74,6 +77,10 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 20.0,
                 ),
+                textFielAges(),
+                SizedBox(
+                  height: 20.0,
+                ),
                 textFieldTitle(),
                 SizedBox(
                   height: 20.0,
@@ -129,44 +136,16 @@ class _HomePageState extends State<HomePage> {
   Widget textFieldName() {
     return textFieldGeneral(
       labelText: 'Nombre de la institución',
-      onChanged: (value) {},
+      onChanged: (Name) {},
+      keyboarType: TextInputType.name,
     );
   }
 
   Widget textFieldDirection() {
     return textFieldGeneral(
       labelText: 'Dirección de la institución',
-      onChanged: (value) {},
-    );
-  }
-
-  Widget textFieldHistory() {
-    return textFieldGeneral(
-      labelText: 'Breve historia sobre la institución',
-      onChanged: (value) {},
-    );
-  }
-
-  Widget textFieldTitle() {
-    return textFieldGeneral(
-      labelText: 'Título otorgado',
-      onChanged: (value) {},
-    );
-  }
-
-  Widget textFieldVocationFollow() {
-    return textFieldGeneral(
-      labelText: 'Vocaciones a seguir',
-      onChanged: (value) {},
-    );
-  }
-
-  Widget buttonRegister() {
-    return buttonGeneral(
-      text: 'Registrar escuela',
-      onPressed: () {},
-      BGcolor: (0xff0DDF9F),
-      borderColor: (0xff0DDF9F),
+      onChanged: (Direction) {},
+      keyboarType: TextInputType.name,
     );
   }
 
@@ -221,6 +200,47 @@ class _HomePageState extends State<HomePage> {
         },
       ).toList(),
       underline: Container(),
+    );
+  }
+
+  Widget textFieldHistory() {
+    return textFieldGeneral(
+      labelText: 'Breve historia sobre la institución',
+      onChanged: (History) {},
+      keyboarType: TextInputType.name,
+    );
+  }
+
+  Widget textFielAges() {
+    return textFieldGeneral(
+      labelText: 'Años cursados',
+      onChanged: (Ages) {},
+      keyboarType: TextInputType.number,
+    );
+  }
+
+  Widget textFieldTitle() {
+    return textFieldGeneral(
+      labelText: 'Título otorgado',
+      onChanged: (TitleSchool) {},
+      keyboarType: TextInputType.name,
+    );
+  }
+
+  Widget textFieldVocationFollow() {
+    return textFieldGeneral(
+      labelText: 'Vocaciones a seguir',
+      onChanged: (value) {},
+      keyboarType: TextInputType.name,
+    );
+  }
+
+  Widget buttonRegister() {
+    return buttonGeneral(
+      text: 'Registrar escuela',
+      onPressed: () {},
+      BGcolor: (0xff0DDF9F),
+      borderColor: (0xff0DDF9F),
     );
   }
 

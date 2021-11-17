@@ -33,6 +33,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247520953225:android:144c2faba124906df01758",
+        "android_client_info": {
+          "package_name": "ar.com.Init.pointstudy_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "247520953225-c08dkrud8d6k5tsn85kg76snhtntlvhm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8VdVnFTH2OIFoPYvtNciAGhgzVHE3xNI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "247520953225-c08dkrud8d6k5tsn85kg76snhtntlvhm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
