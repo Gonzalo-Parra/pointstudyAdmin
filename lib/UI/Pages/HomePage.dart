@@ -1,329 +1,144 @@
 import 'package:flutter/material.dart';
-import 'package:pointstudy_admin/Firebase/cloud.dart';
-import 'package:pointstudy_admin/Firebase/consultas.dart';
+import 'package:pointstudy_admin/UI/Pages/RegisterSchoolPage.dart';
+import 'package:pointstudy_admin/UI/Pages/UpdateSchoolPage.dart';
+import 'package:pointstudy_admin/UI/Pages/deleteSchoolPage.dart';
+import 'package:pointstudy_admin/Widgets/Logotipo.dart';
+import 'package:pointstudy_admin/Widgets/pie_de_pagina.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   static String id = 'HomePage';
+  const HomePage({Key? key}) : super(key: key);
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  String valueNE = 'PRIMARIO';
-  List nivEscolar = ['PRIMARIO', 'SECUNDARIO', 'TERCEARIO', 'ESPECIALES'];
-  String valueTS = 'PUBLICA';
-  List tipEscuela = ['PUBLICA', 'PRIVADA'];
-  var consultas = new Database();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xff642DD5),
-        body: GestureDetector(
-          onTap: () {
-            FocusScope.of(context).unfocus();
-          },
-          child: Center(
-            child: ListView(
-              padding: EdgeInsets.symmetric(
-                horizontal: 50.0,
-              ),
-              children: [
-                SizedBox(
-                  height: 80.0,
-                ),
-                Logotipo(),
-                SizedBox(
-                  height: 80.0,
-                ),
-                textFieldName(),
-                SizedBox(
-                  height: 20.0,
-                ),
-                textFieldDirection(),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Container(
-                  height: 40.0,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color(0xffffffff),
-                    borderRadius: BorderRadius.circular(50.0),
-                  ),
-                  child: nivEschoolButton(),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Container(
-                  height: 40.0,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color(0xffffffff),
-                    borderRadius: BorderRadius.circular(50.0),
-                  ),
-                  child: typeEschoolButton(),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                textFieldHistory(),
-                SizedBox(
-                  height: 20.0,
-                ),
-                textFielAges(),
-                SizedBox(
-                  height: 20.0,
-                ),
-                textFieldTitle(),
-                SizedBox(
-                  height: 20.0,
-                ),
-                textFieldVocationFollow(),
-                SizedBox(
-                  height: 35.0,
-                ),
-                buttonRegister(),
-                SizedBox(
-                  height: 35.0,
-                ),
-                piePagina(),
-              ],
-            ),
+        body: ListView(
+          padding: EdgeInsets.symmetric(
+            horizontal: 50.0,
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget Logotipo() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'POINT STUDY',
-              style: TextStyle(
-                color: Color(0xffffffff),
-                fontSize: 40.0,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-              ),
+            SizedBox(
+              height: 80.0,
             ),
-            Text(
-              'Admin',
-              style: TextStyle(
-                color: Color(0xffffffff),
-                fontSize: 25.0,
-                fontWeight: FontWeight.w100,
-                fontStyle: FontStyle.italic,
-              ),
+            Logotipo(),
+            SizedBox(
+              height: 80.0,
             ),
+            addSchoolButton(context),
+            SizedBox(
+              height: 25.0,
+            ),
+            updateSchoolButton(context),
+            SizedBox(
+              height: 25.0,
+            ),
+            deleteSchoolButton(context),
+            SizedBox(
+              height: 200.0,
+            ),
+            pie_de_pagina(),
           ],
         ),
-      ],
-    );
-  }
-
-  Widget textFieldName() {
-    return textFieldGeneral(
-      labelText: 'Nombre de la institución',
-      onChanged: (Name) {},
-      keyboarType: TextInputType.name,
-    );
-  }
-
-  Widget textFieldDirection() {
-    return textFieldGeneral(
-      labelText: 'Dirección de la institución',
-      onChanged: (Direction) {},
-      keyboarType: TextInputType.name,
-    );
-  }
-
-  Widget nivEschoolButton() {
-    return DropdownButton<String>(
-      isExpanded: true,
-      hint: Text(
-        "Nivel escolar",
-        style: TextStyle(
-          color: Color(0xff716D6D),
-        ),
       ),
-      onChanged: (newValue) {
-        setState(() {
-          valueNE = newValue!;
-        });
-      },
-      value: valueNE,
-      items: nivEscolar.map(
-        (value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-          );
-        },
-      ).toList(),
-      underline: Container(),
     );
   }
 
-  Widget typeEschoolButton() {
-    return DropdownButton<String>(
-      isExpanded: true,
-      hint: Text(
-        "Tipo institución",
-        style: TextStyle(
-          color: Color(0xff716D6D),
-        ),
-      ),
-      onChanged: (newValue) {
-        setState(() {
-          valueTS = newValue!;
-        });
-      },
-      value: valueTS,
-      items: tipEscuela.map(
-        (value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-          );
-        },
-      ).toList(),
-      underline: Container(),
-    );
-  }
-
-  Widget textFieldHistory() {
-    return textFieldGeneral(
-      labelText: 'Breve historia sobre la institución',
-      onChanged: (History) {},
-      keyboarType: TextInputType.name,
-    );
-  }
-
-  Widget textFielAges() {
-    return textFieldGeneral(
-      labelText: 'Años cursados',
-      onChanged: (Ages) {},
-      keyboarType: TextInputType.number,
-    );
-  }
-
-  Widget textFieldTitle() {
-    return textFieldGeneral(
-      labelText: 'Título otorgado',
-      onChanged: (TitleSchool) {},
-      keyboarType: TextInputType.name,
-    );
-  }
-
-  Widget textFieldVocationFollow() {
-    return textFieldGeneral(
-      labelText: 'Vocaciones a seguir',
-      onChanged: (value) {},
-      keyboarType: TextInputType.name,
-    );
-  }
-
-  Widget buttonRegister() {
+  Widget addSchoolButton(context) {
     return buttonGeneral(
-      text: 'Registrar escuela',
-      onPressed: () {},
+      text: 'Agregar institución',
+      onPressed: () {
+        Route route = MaterialPageRoute(builder: (__) => RegisterSchoolPage());
+        Navigator.push(context, route);
+      },
       BGcolor: (0xff0DDF9F),
       borderColor: (0xff0DDF9F),
     );
   }
 
-  Widget piePagina() {
-    return Container(
-      alignment: Alignment.center,
-      child: Text(
-        'Copyright © Gonzalo Parra',
-        style: TextStyle(
-          color: Color(0xffffffff),
-          fontSize: 12.0,
-          fontWeight: FontWeight.w100,
-          fontStyle: FontStyle.italic,
-        ),
-      ),
+  Widget updateSchoolButton(context) {
+    return buttonGeneral(
+      text: 'Modificar institución',
+      onPressed: () {
+        Route route = MaterialPageRoute(builder: (__) => UpdateSchoolPage());
+        Navigator.push(context, route);
+      },
+      BGcolor: (0xff0DDF9F),
+      borderColor: (0xff0DDF9F),
+    );
+  }
+
+  Widget deleteSchoolButton(context) {
+    return buttonGeneral(
+      text: 'Eliminar institución',
+      onPressed: () {
+        Route route = MaterialPageRoute(builder: (__) => DeleteSchoolPage());
+        Navigator.push(context, route);
+      },
+      BGcolor: (0xff0DDF9F),
+      borderColor: (0xff0DDF9F),
     );
   }
 }
 
 class textFieldGeneral extends StatelessWidget {
   final String labelText;
-  final onChanged;
+  final TextEditingController controller;
+  final validator;
+  final onSaved;
   final bool obcureText;
   final TextInputType keyboarType;
+  final maxLines;
+
   const textFieldGeneral({
     @required this.labelText = '',
-    @required this.onChanged = '',
+    required this.controller,
+    @required this.validator,
+    @required this.onSaved,
     this.obcureText = false,
     this.keyboarType = TextInputType.text,
+    this.maxLines,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: 4.0),
-      height: 40.0,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Color(0xff0DDF9F),
-          width: 3.0,
+    return TextFormField(
+      maxLines: maxLines,
+      controller: controller,
+      validator: validator,
+      onSaved: onSaved,
+      keyboardType: keyboarType,
+      obscureText: obcureText,
+      cursorColor: Color(0xff0DDF9F),
+      decoration: InputDecoration(
+        labelText: labelText,
+        labelStyle: TextStyle(
+          color: Color(0xffffffff),
         ),
-        color: Color(0xffffffff),
-        borderRadius: BorderRadius.circular(50.0),
+        floatingLabelStyle: TextStyle(
+          color: Color(0xffffffff),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(50.0),
+          borderSide: BorderSide(
+            color: Color(0xff0DDF9F),
+            width: 3.0,
+            style: BorderStyle.solid,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(50.0),
+          borderSide: BorderSide(
+            color: Color(0xff0DDF9F),
+            width: 3.0,
+            style: BorderStyle.solid,
+          ),
+        ),
       ),
-      child: TextField(
-        cursorColor: Color(0xff0DDF9F),
-        keyboardType: keyboarType,
-        onChanged: onChanged,
-        obscureText: obcureText,
-        decoration: InputDecoration(
-          labelText: labelText,
-          labelStyle: TextStyle(
-            color: Color(0xff716D6D),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(50.0),
-            borderSide: BorderSide(
-              color: Color(0xffffffff),
-              width: 3.0,
-              style: BorderStyle.solid,
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(50.0),
-            borderSide: BorderSide(
-              color: Color(0xffffffff),
-              width: 3.0,
-              style: BorderStyle.solid,
-            ),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(50.0),
-            borderSide: BorderSide(
-              color: Color(0xffffffff),
-              width: 5.0,
-              style: BorderStyle.solid,
-            ),
-          ),
-        ),
-        style: TextStyle(
-          color: Color(0xff716D6D),
-          fontSize: 15.0,
-        ),
+      style: TextStyle(
+        color: Color(0xffffffff),
+        fontSize: 15.0,
       ),
     );
   }
@@ -339,7 +154,7 @@ class buttonGeneral extends StatelessWidget {
   const buttonGeneral({
     @required this.text = '',
     @required this.onPressed = '',
-    this.BGcolor,
+    required this.BGcolor,
     this.borderColor,
     this.fontColor = (0xffffffff),
     this.fontGrosor = FontWeight.normal,
@@ -363,7 +178,7 @@ class buttonGeneral extends StatelessWidget {
           borderRadius: BorderRadius.circular(50.0),
           side: BorderSide(
             color: Color(borderColor),
-            width: 2.0,
+            width: 3.0,
             style: BorderStyle.solid,
           ),
         ),

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pointstudy_admin/UI/Pages/HomePage.dart';
+import 'package:pointstudy_admin/UI/Pages/RegisterSchoolPage.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:pointstudy_admin/UI/Pages/UpdateSchoolPage.dart';
+import 'package:pointstudy_admin/UI/Pages/deleteSchoolPage.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -17,6 +23,9 @@ class MyApp extends StatelessWidget {
       initialRoute: HomePage.id,
       routes: {
         HomePage.id: (context) => HomePage(),
+        RegisterSchoolPage.id: (context) => RegisterSchoolPage(),
+        UpdateSchoolPage.id: (context) => UpdateSchoolPage(),
+        DeleteSchoolPage.id: (context) => DeleteSchoolPage(),
       },
     );
   }
