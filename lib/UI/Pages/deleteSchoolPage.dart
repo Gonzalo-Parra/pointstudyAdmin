@@ -14,16 +14,7 @@ class DeleteSchoolPage extends StatefulWidget {
 }
 
 class _DeleteSchoolPageState extends State<DeleteSchoolPage> {
-  String valueNE = 'PRIMARIO';
-  List nivSchool = ['PRIMARIO', 'SECUNDARIO', 'TERCEARIO', 'ESPECIALES'];
-  String valueTS = 'PUBLICA';
-  List tipEscuela = ['PUBLICA', 'PRIVADA'];
   TextEditingController Name = TextEditingController();
-  TextEditingController Direction = TextEditingController();
-  TextEditingController History = TextEditingController();
-  TextEditingController Ages = TextEditingController();
-  TextEditingController Title = TextEditingController();
-  TextEditingController Vocations = TextEditingController();
 
   final _firebase = FirebaseFirestore.instance;
 
@@ -52,11 +43,19 @@ class _DeleteSchoolPageState extends State<DeleteSchoolPage> {
               ),
               children: [
                 SizedBox(
-                  height: 80.0,
+                  height: 50.0,
                 ),
-                Logotipo(),
+                Text(
+                  'Eliminar   Institución',
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xffffffff),
+                  ),
+                ),
                 SizedBox(
-                  height: 80.0,
+                  height: 50.0,
                 ),
                 textFieldName(),
                 SizedBox(
@@ -64,7 +63,7 @@ class _DeleteSchoolPageState extends State<DeleteSchoolPage> {
                 ),
                 buttonDelete(),
                 SizedBox(
-                  height: 35.0,
+                  height: 385.0,
                 ),
                 pie_de_pagina(),
               ],
@@ -89,13 +88,6 @@ class _DeleteSchoolPageState extends State<DeleteSchoolPage> {
       onPressed: () {
         deleteSchool();
         Name.clear();
-        Direction.clear();
-        valueNE = 'PRIMARIO';
-        valueTS = 'PUBLICA';
-        History.clear();
-        Ages.clear();
-        Title.clear();
-        Vocations.clear();
       },
       BGcolor: (0xff0DDF9F),
       borderColor: (0xff0DDF9F),

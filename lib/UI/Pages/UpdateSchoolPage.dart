@@ -61,11 +61,19 @@ class _UpdateSchoolPageState extends State<UpdateSchoolPage> {
               ),
               children: [
                 SizedBox(
-                  height: 80.0,
+                  height: 50.0,
                 ),
-                Logotipo(),
+                Text(
+                  'Modificar Institución',
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xffffffff),
+                  ),
+                ),
                 SizedBox(
-                  height: 80.0,
+                  height: 50.0,
                 ),
                 textFieldName(),
                 SizedBox(
@@ -206,7 +214,7 @@ class _UpdateSchoolPageState extends State<UpdateSchoolPage> {
     return textFieldGeneral(
       labelText: 'Breve historia sobre la institución',
       controller: History,
-      maxLines: 8,
+      maxLenght: 250,
       keyboarType: TextInputType.name,
     );
   }

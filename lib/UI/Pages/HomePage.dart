@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
             ),
             Logotipo(),
             SizedBox(
-              height: 80.0,
+              height: 130.0,
             ),
             addSchoolButton(context),
             SizedBox(
@@ -85,29 +85,26 @@ class HomePage extends StatelessWidget {
 class textFieldGeneral extends StatelessWidget {
   final String labelText;
   final TextEditingController controller;
-  final validator;
-  final onSaved;
   final bool obcureText;
   final TextInputType keyboarType;
   final maxLines;
+  final maxLenght;
 
   const textFieldGeneral({
-    @required this.labelText = '',
+    required this.labelText,
     required this.controller,
-    @required this.validator,
-    @required this.onSaved,
     this.obcureText = false,
     this.keyboarType = TextInputType.text,
     this.maxLines,
+    this.maxLenght,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       maxLines: maxLines,
+      maxLength: maxLenght,
       controller: controller,
-      validator: validator,
-      onSaved: onSaved,
       keyboardType: keyboarType,
       obscureText: obcureText,
       cursorColor: Color(0xff0DDF9F),
@@ -150,10 +147,11 @@ class buttonGeneral extends StatelessWidget {
   final BGcolor;
   final borderColor;
   final fontColor;
+
   final FontWeight fontGrosor;
   const buttonGeneral({
-    @required this.text = '',
-    @required this.onPressed = '',
+    required this.text,
+    required this.onPressed,
     required this.BGcolor,
     this.borderColor,
     this.fontColor = (0xffffffff),

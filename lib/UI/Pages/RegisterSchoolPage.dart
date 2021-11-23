@@ -41,7 +41,7 @@ class _RegisterSchoolPageState extends State<RegisterSchoolPage> {
       });
       Fluttertoast.showToast(msg: "Se ha regístrado la institución con exito");
     } catch (e) {
-      print(e);
+      Fluttertoast.showToast(msg: '$e');
     }
   }
 
@@ -61,11 +61,19 @@ class _RegisterSchoolPageState extends State<RegisterSchoolPage> {
               ),
               children: [
                 SizedBox(
-                  height: 80.0,
+                  height: 50.0,
                 ),
-                Logotipo(),
+                Text(
+                  'Agregar   Institución',
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xffffffff),
+                  ),
+                ),
                 SizedBox(
-                  height: 80.0,
+                  height: 50.0,
                 ),
                 textFieldName(),
                 SizedBox(
@@ -206,7 +214,7 @@ class _RegisterSchoolPageState extends State<RegisterSchoolPage> {
     return textFieldGeneral(
       labelText: 'Breve historia sobre la institución',
       controller: History,
-      maxLines: 8,
+      maxLenght: 250,
       keyboarType: TextInputType.name,
     );
   }
